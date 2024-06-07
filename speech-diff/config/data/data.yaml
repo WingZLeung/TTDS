@@ -1,0 +1,13 @@
+train_filelist_path: /pathto/resources/filelists/train.txt
+dev_filelist_path: /pathto/resources/filelists/dev.txt
+test_filelist_path: /pathto/resources/filelists/test.txt
+cmudict_path: /pathto/resources/cmu_dictionary
+add_blank: true
+n_spks: 675
+n_feats: 80
+n_fft: 1024
+sample_rate: 16000
+hop_length: 256
+win_length: 1024
+f_min: 0
+f_max: 8000
