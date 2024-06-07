@@ -2,7 +2,7 @@
 Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database.
 
 ## Dataset:
-- download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also correction of transcripts (e.g. from provided instruction to actual words read aloud)
+- download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also correction of transcripts (e.g. from provided instruction to actual words read aloud). Criteria for pre-processing filtering can be changed, but requires changes to the prepare_TORGO.py file (see comments in file). 
 - create csv manifest
 - create random data split
 - create filelists and config files to train Grad-TTS 
@@ -32,7 +32,7 @@ Changes to speech-diff:
 Note: forked from https://github.com/vasistalodagala/whisper-finetune. Changes to whisper-finetune:
 - spec augment training .py script added
 
-##Citation
+## Reference
 ```
 Wing-Zin Leung, Mattias Cross, Anton Ragni, Stefan Goetze. 'Training Data Augmentation for Dysarthric Automatic Speech Recognition by Text-to-Dysarthric-Speech Synthesis'. ArXiv LINK
 ```
