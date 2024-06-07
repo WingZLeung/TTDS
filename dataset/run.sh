@@ -42,6 +42,7 @@ fi
 
 if [ -d "$OUTPUT_DIR/TORGO_split.csv" ]; then
     python prepare_filelists.py $SD_DIR --csv_path $OUTPUT_DIR/TORGO_splits.csv --output_dir './manifests/speechdiff'
+    python prepare_configs.py $SD_DIR 
 else
     echo "TORGO CSV split file does not exist"
 fi

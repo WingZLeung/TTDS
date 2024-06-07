@@ -87,7 +87,7 @@ def main(root_dir, output_dir):
         '''
         check audio for corrupt or empty files
         '''
-        print('Checking audio for corrupt or exmpty files')
+        print('Checking audio for corrupt or empty files')
         corrupt_files = []
         for index, row in csv.iterrows():
             audio = row['wav']
@@ -140,7 +140,8 @@ def main(root_dir, output_dir):
         with open(os.path.join(output_dir, 'TORGO_report.txt'), 'w') as file:
             for item in report_file:
                 file.write(f"{item}\n")
-
+    
+    os.makedirs(output_dir, exist_ok=True)
     text_file = []
 
     TORGO = ['F01', 'F03', 'F04', 'M01', 'M02', 'M03', 'M04', 'M05']  #specify dysarthric speakers here
