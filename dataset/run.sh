@@ -1,8 +1,7 @@
-
-DATASET_DIR="/mnt/parscratch/users/acr22wl/TTDS_test"
+DATASET_DIR="../"
 TORGO_DIR="$DATASET_DIR/TORGO"
-OUTPUT_DIR="/mnt/parscratch/users/acr22wl/TTDS_test/manifests/TORGO"
-SD_DIR="./speech-diff"
+OUTPUT_DIR="../manifests/TORGO"
+SD_DIR="../speech-diff"
 
 # Check if the TORGO directory exists
 if [ -d "$TORGO_DIR" ]; then
