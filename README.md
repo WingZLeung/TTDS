@@ -1,7 +1,7 @@
 # TTDS
 Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database.
 
-## Dataset contains:
+## Dataset:
 - download and pre-process TORGO. Including filtering: corrupt or empty audio files, audio with no transcript. Also correction of transcripts (e.g. from provided instruction to actual words read aloud)
 - create csv manifest
 - create random data split
@@ -10,9 +10,13 @@ Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-
 - evaluate test samples
 
 Use:
+'''
 cd TTDS/dataset
-prepare_TORGO.sh
-speechdiff.sh
+'''
+
+'''
+run.sh
+'''
 
 ## Speech-diff. 
 Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 

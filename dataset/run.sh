@@ -35,14 +35,15 @@ fi
 if [ -d "$TORGO_DIR" ]; then
     echo "preprocessing TORGO"
     python /users/acr22wl/TTDS/dataset/prepare_TORGO.py $TORGO_DIR --output_dir OUTPUT_DIR
+    echo "preparing random data splits"
     python /users/acr22wl/TTDS/dataset/prepare_TORGO_splits.py $OUTPUT_DIR/TORGO.csv --output_dir $OUTPUT_DIR/TORGO_split.csv
 else
     echo "TORGO directory not found" 
 fi
 
 if [ -d "$OUTPUT_DIR/TORGO_split.csv" ]; then
+    echo "Creating speech-diff filelists"
     python prepare_filelists.py $SD_DIR --csv_path $OUTPUT_DIR/TORGO_splits.csv --output_dir './manifests/speechdiff'
-    python prepare_configs.py $SD_DIR 
 else
     echo "TORGO CSV split file does not exist"
 fi
