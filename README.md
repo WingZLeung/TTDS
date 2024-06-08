@@ -19,7 +19,7 @@ cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 ```
 
 ## Dataset:
-- download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also correction of transcripts (e.g. from provided instruction to actual words read aloud). Criteria for pre-processing filtering can be changed, but requires changes to the prepare_TORGO.py file (see comments in file). 
+- download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also, correction of transcripts (e.g. from provided instruction to actual words read aloud). Criteria for pre-processing can be changed, but requires changes to the prepare_TORGO.py file (see comments in file). 
 - create csv manifest
 - create random data split
 - create filelists and config files to train Grad-TTS 
@@ -28,15 +28,15 @@ cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 
 Use:
 ```
-cd TTDS/dataset
+cd TTDS/dataset_3
 ```
-Download and pre-process the TORGO. Create filelists:
+Download and pre-process the TORGO, and create filelists. TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted. All output .csv and .txt files will be saved to OUTPUT_DIR:
 ```
-prepare_TORGO.sh
+prepare_TORGO.sh TORGO_dir --output_dir OUTPUT_DIR
 ```
-Create speech-diff configs and shell scripts, run training & inference/eval scripts:
+Create speech-diff configs and shell scripts, run training and  inference & eval scripts. speechdiff_dir is the dir in the repo, i.e. TTDS/speech-diff and OUTPUT_DIR should be the same as the output_dir for prepare_TORGO.sh:
 ```
-prepare_speechdiff.py
+prepare_speechdiff.py speechdiff_dir --output_dir OUTPUT_DIR
 ```
 
 ## Speech-diff. 
