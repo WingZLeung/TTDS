@@ -30,14 +30,11 @@ Use:
 ```
 cd TTDS/dataset_3
 ```
-Download and pre-process the TORGO, and create filelists. TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted. All output .csv and .txt files will be saved to OUTPUT_DIR:
+Download and pre-process the TORGO, and create filelists. TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted. All output .csv and .txt files, and the Grad-TTS model and synthesised samples will be saved to OUTPUT_DIR:
 ```
-prepare_TORGO.sh TORGO_dir --output_dir OUTPUT_DIR
+TTDS.sh TORGO_dir --output_dir OUTPUT_DIR
 ```
-Create speech-diff configs and shell scripts, run training and  inference & eval scripts. speechdiff_dir is the dir in the repo, i.e. TTDS/speech-diff and OUTPUT_DIR should be the same as the output_dir for prepare_TORGO.sh:
-```
-prepare_speechdiff.py speechdiff_dir --output_dir OUTPUT_DIR
-```
+
 
 ## Speech-diff. 
 Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for full details on installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 
