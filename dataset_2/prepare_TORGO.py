@@ -5,9 +5,57 @@ import glob
 import pandas as pd
 import json
 import librosa
-
+import subprocess
+import tarfile
+import shutil
 
 def main(root_dir, output_dir):
+    def check_TORGO(root_dir):
+        '''
+        check if the TORGO directory exists, if False download and extract files from the TORGO database website.
+        '''
+        # Define the URLs for the files to download. These are the links from the TORGO database website.
+        urls = [
+            "https://www.cs.toronto.edu/~complingweb/data/TORGO/F.tar.bz2",
+            "https://www.cs.toronto.edu/~complingweb/data/TORGO/FC.tar.bz2",
+            "https://www.cs.toronto.edu/~complingweb/data/TORGO/M.tar.bz2",
+            "https://www.cs.toronto.edu/~complingweb/data/TORGO/MC.tar.bz2"
+        ]
+        # Get the current working directory to return to later
+        previous_dir = os.getcwd()
+        if os.path.isdir(root_dir):
+            print(f"Directory 'TORGO' already exists in {root_dir}. Skipping download and extraction.")
+        else:
+            print(f"Directory 'TORGO' does not exist. Creating it now...")
+            os.makedirs(root_dir)
+
+            # Change to TORGO_DIR
+            os.chdir(root_dir)
+            
+            # Download files
+            for url in urls:
+                print(f"Downloading {url}...")
+                subprocess.run(["wget", "-q", "--show-progress", url], check=True)
+
+            # Extract files
+            for url in urls:
+                filename = os.path.basename(url)
+                print(f"Extracting {filename}...")
+                if tarfile.is_tarfile(filename):
+                    with tarfile.open(filename, 'r:bz2') as tar:
+                        tar.extractall()
+                else:
+                    print(f"Error: {filename} is not a valid tar.bz2 file.")
+                
+                # Clean up the downloaded tar.bz2 file
+                print(f"Removing {filename}...")
+                os.remove(filename)
+            
+            print("Download and extraction completed.")
+            
+            # Go back to the previous directory
+            os.chdir(previous_dir)
+            print(f"Returned to the previous directory: {previous_dir}")
     def wav_txt_lst(root):
         '''
         traverse dirs and make a list of all .wav files, and a list of all .txt files
@@ -141,6 +189,7 @@ def main(root_dir, output_dir):
             for item in report_file:
                 file.write(f"{item}\n")
     
+    check_TORGO(root_dir)
     os.makedirs(output_dir, exist_ok=True)
     text_file = []
 
@@ -173,7 +222,7 @@ def main(root_dir, output_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process the TORGO.")
-    parser.add_argument("root_dir", type=str, help="Path to the TORGO directory, i.e. where the speaker dirs are") #root directory, i.e. where all the speaker dirs are saved
+    parser.add_argument("root_dir", type=str, help="Path to the TORGO directory, if it doesn't exist then the TORGO will be downloaded to this dir") #root directory, i.e. where all the speaker dirs are saved
     parser.add_argument("--output_dir", "-o", type=str, default="output", help="Output directory, csv manifests and .txt summaries will be saved here") # output dir, this will save the csv manifests here
 
     args = parser.parse_args()

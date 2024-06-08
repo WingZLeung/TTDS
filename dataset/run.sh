@@ -28,7 +28,7 @@ else
     rm "FC.tar.bz2"
     rm "M.tar.bz2"
     rm "MC.tar.bz2"
-
+    cd -
     echo "Download and extraction completed."
 fi
 
