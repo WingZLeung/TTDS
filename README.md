@@ -30,9 +30,13 @@ Use:
 ```
 cd TTDS/dataset
 ```
-
+Download and pre-process the TORGO. Create filelists:
 ```
-run.sh
+prepare_TORGO.sh
+```
+Create speech-diff configs and shell scripts, run training & inference/eval scripts:
+```
+prepare_speechdiff.py
 ```
 
 ## Speech-diff. 
