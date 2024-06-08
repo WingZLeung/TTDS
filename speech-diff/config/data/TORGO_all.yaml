@@ -1,5 +1,5 @@
 add_blank: true
-cmudict_path: /users/acr22wl/TTDS/speech-diff/resources/cmu_dictionary
+cmudict_path: ../speech-diff/resources/cmu_dictionary
 dev_filelist_path: /mnt/parscratch/users/acr22wl/TTDS_out/output/filelists/speechdiff/TORGO/B3.txt
 f_max: 8000
 f_min: 0

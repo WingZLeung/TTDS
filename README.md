@@ -29,10 +29,13 @@ cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 Use:
 ```
 cd TTDS/dataset_3
+TTDS.py TORGO_dir --output_dir OUTPUT_DIR
 ```
-Download and pre-process the TORGO, and create filelists. TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted. All output .csv and .txt files, and the Grad-TTS model and synthesised samples will be saved to OUTPUT_DIR:
+TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted. All output .csv and .txt files, and the Grad-TTS model and synthesised samples will be saved to OUTPUT_DIR.
+
+If you would like to only download and pre-process the TORGO for other uses:
 ```
-TTDS.sh TORGO_dir --output_dir OUTPUT_DIR
+prepare_TORGO.py TORGO_dir --output_dir OUTPUT_DIR
 ```
 
 

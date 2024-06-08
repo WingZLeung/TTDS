@@ -97,11 +97,11 @@ def main(TORGO_dir, output_dir):
     else:
         print(f'train script {train_script} does not exist')
     
-    eval_scripts = utils.get_sh_files_in_directory(os.path.join(sh_out, f'inf_epochs'))
+    eval_scripts = utils.get_sh_files_in_directory(os.path.join(sh_out, f'inf_{epochs}'))
     if eval_scripts:
         print('Executing eval scripts...')
         for script in eval_scripts:
-            script_path = os.path.join(sh_out, 'inf_epochs', script)
+            script_path = os.path.join(sh_out, f'inf_{epochs}', script)
             print(f'Running synthesis and eval for {script}')
             subprocess.run(["bash", script_path])
     else:

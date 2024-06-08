@@ -29,26 +29,26 @@ def check_TORGO(root_dir):
             print(f"Directory 'TORGO' does not exist. Creating it now...")
             os.makedirs(root_dir)
 
-        # Download and extract files
-        for url in urls:
-            filename = os.path.basename(url)
-            file_path = os.path.join(root_dir, filename)
+            # Download and extract files
+            for url in urls:
+                filename = os.path.basename(url)
+                file_path = os.path.join(root_dir, filename)
 
-            print(f"Downloading {url}...")
-            subprocess.run(["wget", "-q", "--show-progress", "-O", file_path, url], check=True)
+                print(f"Downloading {url}...")
+                subprocess.run(["wget", "-q", "--show-progress", "-O", file_path, url], check=True)
 
-            print(f"Extracting {filename}...")
-            if tarfile.is_tarfile(file_path):
-                with tarfile.open(file_path, 'r:bz2') as tar:
-                    tar.extractall(path=root_dir)
-            else:
-                print(f"Error: {filename} is not a valid tar.bz2 file.")
+                print(f"Extracting {filename}...")
+                if tarfile.is_tarfile(file_path):
+                    with tarfile.open(file_path, 'r:bz2') as tar:
+                        tar.extractall(path=root_dir)
+                else:
+                    print(f"Error: {filename} is not a valid tar.bz2 file.")
 
-            # Clean up the downloaded tar.bz2 file
-            print(f"Removing {filename}...")
-            os.remove(file_path)
+                # Clean up the downloaded tar.bz2 file
+                print(f"Removing {filename}...")
+                os.remove(file_path)
 
-        print("Download and extraction completed.")
+            print("Download and extraction completed.")
 
 
 def wav_txt_lst(root):
