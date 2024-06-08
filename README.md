@@ -1,6 +1,23 @@
 # TTDS
 Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database.
 
+## Installation
+
+Python 3.9.18
+
+```
+pip install cython
+```
+
+```
+cd TTDS/speech-diff
+pip install -r requirements.txt
+```
+
+```
+cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
+```
+
 ## Dataset:
 - download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also correction of transcripts (e.g. from provided instruction to actual words read aloud). Criteria for pre-processing filtering can be changed, but requires changes to the prepare_TORGO.py file (see comments in file). 
 - create csv manifest
@@ -19,7 +36,7 @@ run.sh
 ```
 
 ## Speech-diff. 
-Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 
+Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for full details on installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 
 
 Changes to speech-diff:
 - hydra added
@@ -29,7 +46,7 @@ Changes to speech-diff:
 
 
 ## Whisper-finetune. 
-Note: forked from https://github.com/vasistalodagala/whisper-finetune. Changes to whisper-finetune:
+Note: forked from https://github.com/vasistalodagala/whisper-finetune. Code for filelists and training to be updated to repo. Changes to whisper-finetune:
 - spec augment training .py script added
 
 ## Reference

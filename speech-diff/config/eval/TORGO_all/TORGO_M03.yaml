@@ -1,0 +1,6 @@
+checkpoint: /mnt/parscratch/users/acr22wl/TTDS_out/output/Grad-TTS_TORGO/checkpoints/grad_1000.pt
+n_evaluations: 80
+out_dir: out
+spk: 5
+split: test
+timesteps: 50

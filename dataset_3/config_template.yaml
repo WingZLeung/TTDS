@@ -1,0 +1,48 @@
+hydra:
+  job:
+    name : 'speechdiff'
+    chdir: true
+    config:
+      override_dirname:
+        kv_sep: ':'
+        item_sep: '__'
+        exclude_keys:
+          - data
+  run:
+    dir: ../hydra_outputs/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${hydra.run.dir}/${hydra.job.override_dirname}
+    subdir: ${hydra.sweep.dir}
+
+data:
+
+model:
+  spk_emb_dim: 256
+
+  encoder:
+    n_channels: 192
+    filter_channels: 768
+    filter_channels_dp: 256
+    n_layers: 6
+    kernel_size: 3
+    p_dropout: 0.1
+    n_heads: 2
+    window_size: 4
+
+  decoder:
+    dim: 64
+    beta_min: 0.05
+    beta_max: 10.0
+    pe_scale: 1000
+
+training:
+  tensorboard_dir: tb
+  checkpoint_dir: checkpoints
+  test_size: 1
+  n_epochs: 1000
+  batch_size: 16
+  learning_rate: 1e-4
+  seed: 612
+  save_every: 1
+  gpu: 0
+  num_workers: 30

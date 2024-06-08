@@ -62,8 +62,8 @@ def main(root_dir, output_dir):
         '''
         wav_lst = glob.glob(os.path.join(root, "**/*.wav"), recursive=True)
         text_lst = glob.glob(os.path.join(root, "**/*.txt"), recursive=True)
-        print("tot wav audio files {}".format(len(wav_lst)))
-        print("tot txt prompt files {}".format(len(text_lst)))
+        print("total .wav audio files {}".format(len(wav_lst)))
+        print("total .txt transcript files {}".format(len(text_lst)))
         return wav_lst, text_lst
     def TOR_labels(text_files):
         '''
@@ -81,15 +81,15 @@ def main(root_dir, output_dir):
                 lines = f.readlines() 
             for i, line in enumerate(lines):  #pre-process transcripts
                 line = line.strip("\n")
-                line = line.translate(str.maketrans('', '', punc))
-                line = line.upper()
+                line = line.translate(str.maketrans('', '', punc)) # filter out punctuation 
+                line = line.upper() # change to upper case
                 text_labels[tag2] = line
         return text_labels
     def make_csv(output_dir, wav_lst, text_labels, text_file):
         '''
         create a csv manifest
         '''
-        with open('./subs.json', 'r') as json_file:  #read the json file with original transcript: substituted transcript. Edit json as required
+        with open('subs.json', 'r') as json_file:  #read the json file with original transcript: substituted transcript. Edit json as required
             subs_dict = json.load(json_file)
         csv_data = [['wav', 'speaker', 'corpus', 'block', 'label', 'mic', 'length']] #headers
         for audio in sorted(wav_lst):

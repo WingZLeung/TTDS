@@ -23,6 +23,7 @@ def main(speechdiff_dir, sh_out, model_out, config_name, filelist_dir):
             if os.path.isdir(path):
                 subdirectories.append(name)
         return subdirectories
+    
     def n_evals(spk_root):
         with open(os.path.join(os.path.join(spk_root, 'B1.txt')), 'r') as file:
             train_evals = sum(1 for line in file)

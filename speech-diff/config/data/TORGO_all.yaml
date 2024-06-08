@@ -1,0 +1,13 @@
+add_blank: true
+cmudict_path: /users/acr22wl/TTDS/speech-diff/resources/cmu_dictionary
+dev_filelist_path: /mnt/parscratch/users/acr22wl/TTDS_out/output/filelists/speechdiff/TORGO/B3.txt
+f_max: 8000
+f_min: 0
+hop_length: 256
+n_feats: 80
+n_fft: 1024
+n_spks: 8
+sample_rate: 16000
+test_filelist_path: /mnt/parscratch/users/acr22wl/TTDS_out/output/filelists/speechdiff/TORGO/B2.txt
+train_filelist_path: /mnt/parscratch/users/acr22wl/TTDS_out/output/filelists/speechdiff/TORGO/B1.txt
+win_length: 1024
