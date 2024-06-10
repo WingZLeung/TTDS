@@ -1,11 +1,11 @@
 # TTDS
-Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database.
+Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database (https://www.cs.toronto.edu/~complingweb/data/TORGO/torgo.html) as proposed in the paper "Training Data Augmentation for Dysarthric Automatic Speech Recognition by Text-to-Dysarthric-Speech Synthesis".
 
 ## Installation
 
 Python 3.9.18
 
-You will need to install the dependencies for Grad-TTS (https://github.com/huawei-noah/Speech-Backbones).
+You will need to install the dependencies for Grad-TTS (https://github.com/huawei-noah/Speech-Backbones):
 
 ```
 pip install cython
@@ -20,7 +20,7 @@ pip install -r requirements.txt
 cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 ```
 
-You will also need to install Hydra, which was used for configuring model optimisation during experiments
+You will also need to install Hydra, which was used for configuring model optimisation during experiments:
 ```
 pip install hydra-core --upgrade
 ```
@@ -58,12 +58,17 @@ Changes to speech-diff:
 
 
 ## Whisper-finetune. 
-Note: forked from https://github.com/vasistalodagala/whisper-finetune. Code for filelists and training to be updated to repo. Changes to whisper-finetune:
+Note: forked from https://github.com/vasistalodagala/whisper-finetune. The code to create filelists and configs for training will be added to the repo in a future update. Changes to whisper-finetune:
 - spec augment training .py script added
 
-## Reference
-```
+## Citing this code
+
+Please cite the following paper if you use this code in your work:
+
 Wing-Zin Leung, Mattias Cross, Anton Ragni, Stefan Goetze. 'Training Data Augmentation for Dysarthric Automatic Speech Recognition by Text-to-Dysarthric-Speech Synthesis'. ArXiv LINK
+
+```
+BIBTEX REFERENCE 
 ```
 
 
