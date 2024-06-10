@@ -7,7 +7,7 @@ import subprocess
 
 import utils
 
-def main(TORGO_dir, output_dir):
+def main(TORGO_dir, speechdiff_dir, output_dir):
     '''
     main execution of TORGO pre-processing and filelists creation
     '''
@@ -65,8 +65,8 @@ def main(TORGO_dir, output_dir):
     else:
         print(f'TORGO random splits csv {TORGO_split} does not exist')
     
-    # define path to speech-diff submodule
-    speechdiff_dir = "../speech-diff"
+    # # define path to speech-diff submodule
+    # speechdiff_dir = "../speech-diff"
 
     #check if the speechdiff filelists dir exists
     filelist_dir = os.path.join(output_dir, 'filelists', 'speechdiff', 'TORGO')
@@ -111,8 +111,9 @@ def main(TORGO_dir, output_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process the TORGO.")
     parser.add_argument("TORGO_dir", type=str, help="Path to the TORGO directory, if it doesn't exist then the TORGO will be downloaded to this dir") #root directory, i.e. where all the speaker dirs are saved
+    parser.add_argument("-speechdiff_dir", type=str, default="../speech-diff", help="Path to the speech-diff directory") #the default is ../speech-diff which should run if your wd is TTDS/dataset
     parser.add_argument("--output_dir", "-o", type=str, default="output", help="Output directory, csv manifests and .txt summaries will be saved here") # output dir, this will save the csv manifests here
 
     args = parser.parse_args()
 
-    main(args.TORGO_dir, args.output_dir)
+    main(args.TORGO_dir, args.speechdiff_dir, args.output_dir)
