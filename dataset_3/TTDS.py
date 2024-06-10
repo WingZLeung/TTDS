@@ -111,7 +111,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process the TORGO.")
     parser.add_argument("TORGO_dir", type=str, help="Path to the TORGO directory, if it doesn't exist then the TORGO will be downloaded to this dir") #root directory, i.e. where all the speaker dirs are saved
-    parser.add_argument("-speechdiff_dir", type=str, default="../speech-diff", help="Path to the speech-diff directory") #the default is ../speech-diff which should run if your wd is TTDS/dataset
+    parser.add_argument("--speechdiff_dir", type=str, default="../speech-diff", help="Path to the speech-diff directory") #the default is ../speech-diff which should run if your wd is TTDS/dataset
     parser.add_argument("--output_dir", "-o", type=str, default="output", help="Output directory, csv manifests and .txt summaries will be saved here") # output dir, this will save the csv manifests here
 
     args = parser.parse_args()

@@ -45,22 +45,22 @@ def main(TORGO_dir, output_dir):
         for item in text_file:
             file.write(f"{item}\n")
 
-    #check if TORGO csv exists, if so create random splits and save to TORGO_split.csv
-    TORGO_csv = os.path.join(TORGO_out, 'TORGO.csv')
-    if TORGO_csv:
-        print('Creating random splits')
-        random_split(TORGO_csv, os.path.join(TORGO_out), 42)
-    else:
-        print(f'TORGO csv {TORGO_csv} does not exist')
+    # #check if TORGO csv exists, if so create random splits and save to TORGO_split.csv
+    # TORGO_csv = os.path.join(TORGO_out, 'TORGO.csv')
+    # if TORGO_csv:
+    #     print('Creating random splits')
+    #     random_split(TORGO_csv, os.path.join(TORGO_out), 42)
+    # else:
+    #     print(f'TORGO csv {TORGO_csv} does not exist')
     
-    #check if TORGO splits csv exists, if so create speechdiff filelists
-    TORGO_split = os.path.join(TORGO_out, 'TORGO_split.csv')
-    if TORGO_split:
-        print('Creating speechdiff filelists')
-        data = pd.read_csv(TORGO_split) #read csv file
-        all_splits(data, speechd_out)
-    else:
-        print(f'TORGO random splits csv {TORGO_split} does not exist')
+    # #check if TORGO splits csv exists, if so create speechdiff filelists
+    # TORGO_split = os.path.join(TORGO_out, 'TORGO_split.csv')
+    # if TORGO_split:
+    #     print('Creating speechdiff filelists')
+    #     data = pd.read_csv(TORGO_split) #read csv file
+    #     all_splits(data, speechd_out)
+    # else:
+    #     print(f'TORGO random splits csv {TORGO_split} does not exist')
 
 
 if __name__ == "__main__":
