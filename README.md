@@ -39,7 +39,7 @@ Use:
 cd TTDS/dataset_3
 TTDS.py TORGO_dir --speechdiff_dir SPEECHDIFF_DIR --output_dir OUTPUT_DIR
 ```
-TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted here. SPEECHDIFF_DIR should be the path to TTDS/speech-diff, it is '../speech-diff' by default which should run if your working directory is TTDS/dataset. All output .csv and .txt files, and the Grad-TTS model and synthesised samples will be saved to OUTPUT_DIR.
+TORGO_dir is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted here. SPEECHDIFF_DIR should be the path to TTDS/speech-diff, by default it is '../speech-diff' which should run correctly if your working directory is TTDS/dataset. All output .csv and .txt files, and the Grad-TTS model and synthesised samples will be saved to OUTPUT_DIR.
 
 If you would like to only download and pre-process the TORGO for other uses:
 ```
