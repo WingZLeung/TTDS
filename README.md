@@ -1,5 +1,5 @@
 # TTDS
-Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database (https://www.cs.toronto.edu/~complingweb/data/TORGO/torgo.html) as proposed in the paper "Training Data Augmentation for Dysarthric Automatic Speech Recognition by Text-to-Dysarthric-Speech Synthesis". Generated speech files are available on request.
+Text-to-dysarthric speech (TTDS) synthesis. An implementation to train the Grad-TTS model with the TORGO database (https://www.cs.toronto.edu/~complingweb/data/TORGO/torgo.html) as proposed in the paper "Training Data Augmentation for Dysarthric Automatic Speech Recognition by Text-to-Dysarthric-Speech Synthesis". The generated speech files are available on request.
 
 ## Installation
 
