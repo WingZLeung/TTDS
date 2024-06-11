@@ -59,7 +59,7 @@ Changes to speech-diff:
 
 
 ## Whisper-finetune. 
-Note: forked from https://github.com/vasistalodagala/whisper-finetune. The code to create filelists for and configs for LOSO training will be added to the repo in a future update. Changes to whisper-finetune:
+Note: forked from https://github.com/vasistalodagala/whisper-finetune. The code to create filelists and configs for LOSO training will be added to the repo in a future update. Changes to whisper-finetune:
 - spec augment training .py script added
 
 ## Citing this code
