@@ -8,12 +8,11 @@
 #SBATCH --time=80:00:00
 
 module load Anaconda3/2022.10
-#module load cuDNN/8.0.4.30-CUDA-11.1.1
 
 source activate SDiff
 
 cd /users/acr22wl/TTDS/dataset_3
 
-python prepare_TORGO.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --speechdiff_dir /users/acr22wl/TTDS/speech-diff --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
+# python prepare_TORGO.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --speechdiff_dir /users/acr22wl/TTDS/speech-diff --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
 
 python TTDS.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
