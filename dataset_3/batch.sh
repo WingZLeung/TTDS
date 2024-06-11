@@ -14,8 +14,6 @@ source activate SDiff
 
 cd /users/acr22wl/TTDS/dataset_3
 
-# python prepare_TORGO.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
-
-# python prepare_speechdiff.py /users/acr22wl/TTDS/speech-diff --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
+python prepare_TORGO.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --speechdiff_dir /users/acr22wl/TTDS/speech-diff --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
 
 python TTDS.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output

@@ -118,6 +118,39 @@ def make_csv(output_dir, wav_lst, text_labels, text_file):
     df = pd.DataFrame(csv_data[1:], columns=csv_data[0])  # Skip the header row
     return df, text_file
 
+def make_csv_only(output_dir, wav_lst, text_labels, text_file):
+    '''
+    create a csv manifest
+    '''
+    TORGO = ['F01', 'F03', 'F04', 'M01', 'M02', 'M03', 'M04', 'M05']  #specify dysarthric speakers here
+    TORGO_control = ['FC01', 'FC02', 'FC03', 'MC01', 'MC02', 'MC03', 'MC04'] # control speakers
+    with open('subs.json', 'r') as json_file:  #read the json file with original transcript: substituted transcript. Edit json as required
+        subs_dict = json.load(json_file)
+    csv_data = [['wav', 'speaker', 'corpus', 'label', 'mic', 'length']] #headers
+    for audio in sorted(wav_lst):
+        ttag = audio.split('.')
+        temp = " ".join(ttag[0:-1])
+        ttemp = temp.split('/')
+        tag = "".join(ttemp[0:-2]) #rootdirSpkSessionN
+        tag2 = tag + ttemp[-1]
+        spk = ttemp[-4]
+        speaker = f"TORGO_{spk}"
+        mic = ttemp[-2].split('_')[-1]
+        if spk in TORGO:
+            corpus = 'TORGO'
+        else:
+            corpus = 'TORGO_control'
+        if tag2 in text_labels:
+            if text_labels[tag2] in subs_dict:
+                lab = text_labels[tag2] 
+                label = subs_dict[lab]
+            else:
+                label = text_labels[tag2]
+            csv_data.append([audio, speaker, corpus, label, mic, 'length'])
+        else:
+            text_file.append(f"{audio}|None|No label")
+    df = pd.DataFrame(csv_data[1:], columns=csv_data[0])  # Skip the header row
+    return df, text_file
 
 def preproces_csv(df, text_file):
     '''

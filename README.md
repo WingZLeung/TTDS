@@ -48,7 +48,7 @@ prepare_TORGO.py TORGO_dir --output_dir OUTPUT_DIR
 
 
 ## Speech-diff. 
-Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for full details on installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 
+Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for full details on the repo and installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 
 
 Changes to speech-diff:
 - hydra added

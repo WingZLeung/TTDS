@@ -1,8 +1,0 @@
-{
-"torgo_dir": "./TORGO",
-"filelist_dir": "./filelists",
-"speechdiff_dir": "../speech-diff",
-"sh_dir": "./shell_scripts",
-"model_dir": "./output"
-}
-

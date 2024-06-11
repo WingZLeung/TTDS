@@ -2,7 +2,7 @@ import os
 import sys
 import argparse
 import pandas as pd
-from utils import check_TORGO, wav_txt_lst, TOR_labels, make_csv, preproces_csv, check_audio, analyze_csv, random_split, spk_id, prepare_filelists, all_splits
+from utils import check_TORGO, wav_txt_lst, TOR_labels, make_csv_only, preproces_csv, check_audio, analyze_csv
 
 def main(TORGO_dir, output_dir):
     '''
@@ -28,7 +28,7 @@ def main(TORGO_dir, output_dir):
     text_labels = TOR_labels(txt_lst)
 
     # create csv manifest and pre-process, including check audio files 
-    csv, text_file = make_csv(TORGO_out, wav_lst, text_labels, text_file)
+    csv, text_file = make_csv_only(TORGO_out, wav_lst, text_labels, text_file)
     filtered_csv, text_file = preproces_csv(csv, text_file)
     checked_csv, text_file = check_audio(filtered_csv, text_file)
     # save checked csv
@@ -44,23 +44,6 @@ def main(TORGO_dir, output_dir):
     with open(os.path.join(TORGO_out, 'TORGO_removed.txt'), 'w') as file:
         for item in text_file:
             file.write(f"{item}\n")
-
-    # #check if TORGO csv exists, if so create random splits and save to TORGO_split.csv
-    # TORGO_csv = os.path.join(TORGO_out, 'TORGO.csv')
-    # if TORGO_csv:
-    #     print('Creating random splits')
-    #     random_split(TORGO_csv, os.path.join(TORGO_out), 42)
-    # else:
-    #     print(f'TORGO csv {TORGO_csv} does not exist')
-    
-    # #check if TORGO splits csv exists, if so create speechdiff filelists
-    # TORGO_split = os.path.join(TORGO_out, 'TORGO_split.csv')
-    # if TORGO_split:
-    #     print('Creating speechdiff filelists')
-    #     data = pd.read_csv(TORGO_split) #read csv file
-    #     all_splits(data, speechd_out)
-    # else:
-    #     print(f'TORGO random splits csv {TORGO_split} does not exist')
 
 
 if __name__ == "__main__":
