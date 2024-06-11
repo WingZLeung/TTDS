@@ -11,7 +11,7 @@ module load Anaconda3/2022.10
 
 source activate SDiff
 
-cd /users/acr22wl/TTDS/dataset_3
+cd /users/acr22wl/TTDS/dataset
 
 # python prepare_TORGO.py /mnt/parscratch/users/acr22wl/TTDS/dataset_2/TORGO --speechdiff_dir /users/acr22wl/TTDS/speech-diff --output_dir /mnt/parscratch/users/acr22wl/TTDS_out/output
 
