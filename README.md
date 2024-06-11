@@ -35,7 +35,7 @@ pip install hydra-core --upgrade
 
 Use:
 ```
-cd TTDS/dataset_3
+cd TTDS/dataset
 TTDS.py TORGO_DIR --speechdiff_dir SPEECHDIFF_DIR --output_dir OUTPUT_DIR
 ```
 TORGO_DIR is where TORGO is saved, and if it doesn't exist TORGO will be downloaded and extracted here. \
