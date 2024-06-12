@@ -74,7 +74,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
         # load speaker id dict
         with open(os.path.join(filelist_dir, 'speaker_id_dict.json'), 'r') as file:
             spk_dict = json.load(file)
-        epochs = 1000 # define number of epochs
+        epochs = 1000 # define which epoch checkpoint to peform inferenc with
         # define output directories
         sh_out = os.path.join(output_dir, 'shell_scripts')
         model_out = os.path.join(output_dir, 'Grad-TTS_TORGO')
