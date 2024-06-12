@@ -357,8 +357,7 @@ def data_conf(speechdiff_dir, filelist_dir, model_out, sh_out):
     # create data.yaml config file
     with open("./data_template.yaml", 'r') as file:
         template = yaml.safe_load(file)
-    # template['cmudict_path'] = os.path.join(speechdiff_dir, 'resources', 'cmu_dictionary')
-    template['cmudict_path'] = 'cmu_dictionary'
+    template['cmudict_path'] = os.path.join(speechdiff_dir, 'resources', 'cmu_dictionary')
     template['train_filelist_path'] = os.path.join(filelist_dir, 'B1.txt')
     template['dev_filelist_path'] = os.path.join(filelist_dir, 'B3.txt')
     template['test_filelist_path'] = os.path.join(filelist_dir, 'B2.txt')
