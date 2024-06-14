@@ -66,7 +66,7 @@ Note: forked from https://github.com/vasistalodagala/whisper-finetune. The code 
 
 Please cite the following paper if you use this code in your work:
 
-Leung, W.-Z., Cross, M., Ragni, A. and Goetze, S., 2024. Training data augmentation for dysarthric automatic speech recognition by text-to-dysarthric-speech synthesis. *arXiv*. Available at: https://arxiv.org/abs/2406.08568 [Accessed 14 June 2024].
+Leung, W.-Z., Cross, M., Ragni, A. and Goetze, S., 2024. Training data augmentation for dysarthric automatic speech recognition by text-to-dysarthric-speech synthesis. *arXiv*. Available at: https://arxiv.org/abs/2406.08568
 
 ```
 @misc{leung2024training,
