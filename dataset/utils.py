@@ -126,7 +126,7 @@ def make_csv_only(output_dir, wav_lst, text_labels, text_file):
     TORGO_control = ['FC01', 'FC02', 'FC03', 'MC01', 'MC02', 'MC03', 'MC04'] # control speakers
     with open('subs.json', 'r') as json_file:  #read the json file with original transcript: substituted transcript. Edit json as required
         subs_dict = json.load(json_file)
-    csv_data = [['wav', 'speaker', 'corpus', 'label', 'mic', 'length']] #headers
+    csv_data = [['wav', 'speaker', 'corpus', 'label', 'ID', 'mic', 'length']] #headers
     for audio in sorted(wav_lst):
         ttag = audio.split('.')
         temp = " ".join(ttag[0:-1])
@@ -146,7 +146,7 @@ def make_csv_only(output_dir, wav_lst, text_labels, text_file):
                 label = subs_dict[lab]
             else:
                 label = text_labels[tag2]
-            csv_data.append([audio, speaker, corpus, label, mic, 'length'])
+            csv_data.append([audio, speaker, corpus, label, tag2, mic, 'length'])
         else:
             text_file.append(f"{audio}|None|No label")
     df = pd.DataFrame(csv_data[1:], columns=csv_data[0])  # Skip the header row
@@ -236,8 +236,14 @@ def analyze_csv(df, text_file, output_dir):
 
 
 def random_split(csv_path, output_dir, random_seed=None):
+    '''
+    Create blocks for the TORGO from paired audio
+    '''
     os.makedirs(output_dir, exist_ok=True)
-        #set seed
+    
+    # Code for randomised split
+    '''
+    #set seed
     if random_seed is not None:
         random.seed(random_seed)
     # shuffle per speaker and randomly allocate data splits
@@ -255,6 +261,34 @@ def random_split(csv_path, output_dir, random_seed=None):
         df.loc[speaker_data.iloc[train_end:val_end].index, 'block'] = 'B2' # test block
         df.loc[speaker_data.iloc[val_end:].index, 'block'] = 'B3' # eval block
     df.to_csv(os.path.join(output_dir, 'TORGO_split.csv'))   
+    '''
+    # code for paired audio split 
+    # set seed
+    if random_seed is not None:
+        random.seed(random_seed)
+        np.random.seed(random_seed) 
+    #read processed dataframe
+    data = pd.read_csv(csv_path)
+    speakers = data.speaker.unique().tolist()
+    # for each speaker find paired audio (i.e same recordings from wab and array mics)
+    for speaker in speakers:
+        sub_data = data[data['speaker']==speaker]
+        u_tags = sub_data.ID.unique().tolist()
+        np.random.shuffle(u_tags) # shuffle order of paired audio to randomise blocks
+        num_combinations = len(u_tags)
+        print(f"{speaker}. Paired audio: {num_combinations}")
+        combinations_per_block = num_combinations // 3
+        Block1 = u_tags[:combinations_per_block]
+        Block2 = u_tags[combinations_per_block: 2 * combinations_per_block]
+        Block3 = u_tags[2 * combinations_per_block:]
+        for tag in Block1:
+            data.loc[(data['speaker'] == speaker) & (data['ID'] == tag), 'block'] = 'B1'
+        for tag in Block2:
+            data.loc[(data['speaker'] == speaker) & (data['ID'] == tag), 'block'] = 'B2'
+        for tag in Block3:
+            data.loc[(data['speaker'] == speaker) & (data['ID'] == tag), 'block'] = 'B3'
+        os.makedirs(output_dir, exist_ok=True)
+    data.to_csv(os.path.join(output_dir, "TORGO_paired.csv"), index=False)
 
 
 def spk_id(speaker_input):
