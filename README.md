@@ -29,8 +29,8 @@ pip install hydra-core --upgrade
 ## Dataset:
 - download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also, correction of transcripts (e.g. from provided instruction to actual words read aloud). Criteria for pre-processing can be changed, but requires changes to the prepare_TORGO.py file (see comments in the file). 
 - create csv manifest
-- create random data split, and filelists and config files to train Grad-TTS 
-- train Grad-TTS and synthesise dysarthric data
+- create random data split from paired audio, and create filelists and config files to train Grad-TTS 
+- train Grad-TTS with dysarthric data, and use the trained model to synthesise dysarthric data
 - evaluate test samples
 
 Use:
@@ -49,12 +49,13 @@ prepare_TORGO.py TORGO_DIR --output_dir OUTPUT_DIR
 
 
 ## Speech-diff. 
-Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for full details on the repo and installation. You will also need to install Hydra, which was used for configuring model optimisation during experiments. 
+Note: forked from https://github.com/huawei-noah/Speech-Backbones. See link for full details on the repo and installation. You will also need to install Hydra, which was used for configuring model optimisation for experiments in the paper. 
 
 Changes to speech-diff:
 - hydra added
 - initialisation of speaker embedding for multi and single speaker data
 - configs
+- Speechbrain hifigan vocoder (https://huggingface.co/speechbrain/tts-hifigan-ljspeech)
 - evaluation script. Modified from https://github.com/espnet/espnet
 
 
