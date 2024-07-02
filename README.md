@@ -55,7 +55,7 @@ Changes to speech-diff:
 - hydra added
 - initialisation of speaker embedding for multi and single speaker data
 - configs
-- Speechbrain hifigan vocoder (https://huggingface.co/speechbrain/tts-hifigan-ljspeech)
+- SpeechBrain hifigan vocoder (https://huggingface.co/speechbrain/tts-hifigan-ljspeech)
 - evaluation script. Modified from https://github.com/espnet/espnet
 
 
