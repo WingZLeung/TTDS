@@ -70,12 +70,13 @@ Please cite the following paper if you use this code in your work:
 Leung, W.-Z., Cross, M., Ragni, A. and Goetze, S., 2024. Training data augmentation for dysarthric automatic speech recognition by text-to-dysarthric-speech synthesis. *arXiv*. Available at: https://arxiv.org/abs/2406.08568.
 
 ```
-@misc{leung2024training,
+@misc{leung2024trainingdataaugmentationdysarthric,
       title={Training Data Augmentation for Dysarthric Automatic Speech Recognition by Text-to-Dysarthric-Speech Synthesis}, 
       author={Wing-Zin Leung and Mattias Cross and Anton Ragni and Stefan Goetze},
       year={2024},
       eprint={2406.08568},
       archivePrefix={arXiv},
-      primaryClass={id='cs.SD' full_name='Sound' is_active=True alt_name=None in_archive='cs' is_general=False description='Covers all aspects of computing with sound, and sound as an information channel. Includes models of sound, analysis and synthesis, audio user interfaces, sonification of data, computer music, and sound signal processing. Includes ACM Subject Class H.5.5, and intersects with H.1.2, H.5.1, H.5.2, I.2.7, I.5.4, I.6.3, J.5, K.4.2.'}
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2406.08568}, 
 }
 ```
