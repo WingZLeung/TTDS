@@ -93,7 +93,7 @@ def make_csv(output_dir, wav_lst, text_labels, text_file):
     TORGO_control = ['FC01', 'FC02', 'FC03', 'MC01', 'MC02', 'MC03', 'MC04'] # control speakers
     with open('subs.json', 'r') as json_file:  #read the json file with original transcript: substituted transcript. Edit json as required
         subs_dict = json.load(json_file)
-    csv_data = [['wav', 'speaker', 'corpus', 'block', 'label', 'mic', 'length']] #headers
+    csv_data = [['wav', 'speaker', 'corpus', 'block', 'label', 'ID', 'mic', 'length']] #headers
     for audio in sorted(wav_lst):
         ttag = audio.split('.')
         temp = " ".join(ttag[0:-1])
@@ -113,7 +113,7 @@ def make_csv(output_dir, wav_lst, text_labels, text_file):
                 label = subs_dict[lab]
             else:
                 label = text_labels[tag2]
-            csv_data.append([audio, speaker, corpus, 'block', label, mic, 'length'])
+            csv_data.append([audio, speaker, corpus, 'block', label, tag2, mic, 'length'])
         else:
             text_file.append(f"{audio}|None|No label")
     df = pd.DataFrame(csv_data[1:], columns=csv_data[0])  # Skip the header row
