@@ -197,6 +197,10 @@ def check_audio(csv, text_file):
                 text_file.append(f"{audio}|{row['label']}|short duration")
                 corrupt_files.append(index)
                 continue
+            if duration > 60:
+                text_file.append(f"{audio}|{row['label']}|>60 duration")
+                corrupt_files.append(index)
+                continue
         except Exception as e:
             corrupt_files.append(index)
             text_file.append(f"{audio}|{row['label']}|{str(e)}")
