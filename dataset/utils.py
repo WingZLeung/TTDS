@@ -289,7 +289,7 @@ def random_split(csv_path, output_dir, random_seed=None):
         for tag in Block3:
             data.loc[(data['speaker'] == speaker) & (data['ID'] == tag), 'block'] = 'B3'
         os.makedirs(output_dir, exist_ok=True)
-    data.to_csv(os.path.join(output_dir, "TORGO_paired.csv"), index=False)
+    data.to_csv(os.path.join(output_dir, "TORGO_split.csv"), index=False)
 
 
 def spk_id(speaker_input):
