@@ -192,7 +192,7 @@ def check_audio(csv, text_file):
             y, sr = librosa.load(audio, sr=None)
             duration = librosa.get_duration(y=y, sr=sr)
             row['length'] = duration
-            if duration < 0.1:    # Edit value to specify length of audio to filter out. Currently = 0.1 seconds
+            if duration < 0.4:    # Edit value to specify length of audio to filter out. Currently = 0.4 seconds
                 text_file.append(f"{audio}|{row['label']}|short duration")
                 corrupt_files.append(index)
                 continue
