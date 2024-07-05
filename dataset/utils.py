@@ -173,10 +173,12 @@ def check_audio(csv, text_file):
     '''
     check audio for corrupt or empty files
     '''
-    print('Checking audio for corrupt or empty files...')
+    DURATION_MIN = 0.4
+    DURATION_MAX = 60
     corrupt_files = []
     total_files = len(csv)
     print('Total files to check: ', total_files)
+    print(f'Removing audio files with <{DURATION_MIN} and >{DURATION_MAX} duration')
     progress_bar = tqdm(total=total_files)
     for index, row in csv.iterrows():
         audio = row['wav']
@@ -193,12 +195,12 @@ def check_audio(csv, text_file):
             y, sr = librosa.load(audio, sr=None)
             duration = librosa.get_duration(y=y, sr=sr)
             row['length'] = duration
-            if duration < 0.4:    # Edit value to specify length of audio to filter out. Currently = 0.4 seconds
-                text_file.append(f"{audio}|{row['label']}|short duration")
+            if duration < DURATION_MIN:
+                text_file.append(f"{audio}|{row['label']}|<{DURATION_MIN} duration")
                 corrupt_files.append(index)
                 continue
-            if duration > 60:
-                text_file.append(f"{audio}|{row['label']}|>60 duration")
+            if duration > DURATION_MAX:
+                text_file.append(f"{audio}|{row['label']}|>{DURATION_MAX} duration")
                 corrupt_files.append(index)
                 continue
         except Exception as e:
