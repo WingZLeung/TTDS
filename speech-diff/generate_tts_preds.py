@@ -15,7 +15,21 @@ from model import GradTTS
 from data import TextMelSpeakerDataset, TextMelSpeakerBatchCollate
 
 #from nemo.collections.tts.models import HifiGanModel
-from speechbrain.pretrained import HIFIGAN
+# from speechbrain.pretrained import HIFIGAN
+try:
+    from speechbrain.pretrained import HIFIGAN
+    print("Successfully imported HIFIGAN from speechbrain.pretrained")
+except ImportError as e:
+    print(f"ImportError: {e}")
+    print("Trying to import HIFIGAN from speechbrain.inference.vocoders")
+    try:
+        from speechbrain.inference.vocoders import HIFIGAN
+        print("Successfully imported HIFIGAN from speechbrain.inference.vocoders")
+    except ImportError as e:
+        print(f"ImportError: {e}")
+        print("Failed to import HIFIGAN from both sources. Please check your installations.")
+        raise
+        
 from scipy.io.wavfile import write
 
 @hydra.main(version_base=None, config_path='./config')
