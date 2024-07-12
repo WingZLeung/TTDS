@@ -26,9 +26,9 @@ pip install hydra-core --upgrade
 ```
 
 Finally, install SpeechBrain for the HiFi-GAN vocoder:
-'''
+```
 pip install speechbrain
-'''
+```
 
 
 ## Dataset:
