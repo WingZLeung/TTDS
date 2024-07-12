@@ -25,6 +25,11 @@ You will also need to install Hydra, which was used for configuring model optimi
 pip install hydra-core --upgrade
 ```
 
+Finally, install SpeechBrain for the HiFi-GAN vocoder:
+'''
+pip install speechbrain
+'''
+
 
 ## Dataset:
 - download and pre-process TORGO. Including filtering corrupt or empty audio files, inaccurate transcripts, and audio with no transcript. Also, correction of transcripts (e.g. from provided instruction to actual words read aloud). Criteria for pre-processing can be changed, but requires changes to the prepare_TORGO.py file (see comments in the file). 
