@@ -5,7 +5,6 @@ import pandas as pd
 import json
 import subprocess
 
-
 import utils
 
 def main(TORGO_dir, speechdiff_dir, output_dir):
@@ -71,11 +70,11 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
 
     #check if the speechdiff filelists dir exists
     filelist_dir = os.path.join(output_dir, 'filelists', 'speechdiff', 'TORGO')
-    if os.path.isdir(filelist_dir):
+    if filelist_dir:
         # load speaker id dict
         with open(os.path.join(filelist_dir, 'speaker_id_dict.json'), 'r') as file:
             spk_dict = json.load(file)
-        epochs = 1000 # define which epoch checkpoint to peform inference with
+        epochs = 1000 # define which epoch checkpoint to peform inferenc with
         # define output directories
         sh_out = os.path.join(output_dir, 'shell_scripts')
         model_out = os.path.join(output_dir, 'Grad-TTS_TORGO')
@@ -92,14 +91,14 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
 
     # check if train script exists and run
     train_script = os.path.join(sh_out, 'train.sh')
-    if os.path.exists(train_script):
+    if train_script:
         print('Training script found. Running...')
         subprocess.run(["bash", train_script])
     else:
         print(f'train script {train_script} does not exist')
     
     eval_scripts = utils.get_sh_files_in_directory(os.path.join(sh_out, f'inf_{epochs}'))
-    if os.path.exists(eval_scripts):
+    if eval_scripts:
         print('Executing eval scripts...')
         for script in eval_scripts:
             script_path = os.path.join(sh_out, f'inf_{epochs}', script)
