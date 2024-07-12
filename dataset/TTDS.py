@@ -97,7 +97,18 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
         subprocess.run(["bash", train_script])
     else:
         print(f'train script {train_script} does not exist')
-    
+
+    checkpoint_folder = os.path.join(os.path.join(output_dir, 'Grad-TTS_TORGO', 'checkpoints'))
+    if os.path.isdir(checkpoint_folder):
+        print('checkpoint dir exists')
+        checkpoint_path = os.path.join(checkpoint_folder, 'grad_1000.pt')
+        if os.path.exists(checkpoint_path):
+            print('grad_1000 checpoint also exists')
+        else:
+            print('checkpoint Grad 1000 does not exist')
+    else:
+        print('No checkpoint')
+
     eval_scripts = utils.get_sh_files_in_directory(os.path.join(sh_out, f'inf_{epochs}'))
     if os.path.exists(eval_scripts):
         print('Executing eval scripts...')
