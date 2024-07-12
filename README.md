@@ -38,6 +38,8 @@ pip install speechbrain
 - train Grad-TTS with dysarthric data, and use the trained model to synthesise dysarthric data
 - evaluate test samples
 
+The model checkpoints, synthesised samples and evaluation scripts will be saved in OUTPUT_DIR/Grad-TTS_TORGO.
+
 Use:
 ```
 cd TTDS/dataset
