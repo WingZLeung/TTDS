@@ -93,7 +93,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
     # check if train script exists and run
     train_script = os.path.join(sh_out, 'train.sh')
     if os.path.exists(train_script):
-        print('Training script found. Running...')
+        print(f'Training script found. Running {train_script}...')
         subprocess.run(["bash", train_script])
     else:
         print(f'train script {train_script} does not exist')
