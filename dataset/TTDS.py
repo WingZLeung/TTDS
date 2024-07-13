@@ -100,7 +100,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
 
     checkpoint_folder = os.path.join(os.path.join(output_dir, 'Grad-TTS_TORGO', 'checkpoints'))
     if os.path.isdir(checkpoint_folder):
-        print('checkpoint dir exists')
+        print(f'checkpoint dir exists in {checkpoint_folder}')
         checkpoint_path = os.path.join(checkpoint_folder, 'grad_1000.pt')
         if os.path.exists(checkpoint_path):
             print('grad_1000 checkpoint also exists')
@@ -114,7 +114,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
         print('Executing eval scripts...')
         for script in eval_scripts:
             script_path = os.path.join(sh_out, f'inf_{epochs}', script)
-            print(f'Running synthesis and eval for {script}')
+            print(f'Running synthesis and eval for {script_path}')
             subprocess.run(["bash", script_path])
     else:
         print('No eval .sh files found')
