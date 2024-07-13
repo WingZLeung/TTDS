@@ -103,7 +103,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
         print('checkpoint dir exists')
         checkpoint_path = os.path.join(checkpoint_folder, 'grad_1000.pt')
         if os.path.exists(checkpoint_path):
-            print('grad_1000 checpoint also exists')
+            print('grad_1000 checkpoint also exists')
         else:
             print('checkpoint Grad 1000 does not exist')
     else:
