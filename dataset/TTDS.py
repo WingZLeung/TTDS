@@ -110,7 +110,7 @@ def main(TORGO_dir, speechdiff_dir, output_dir):
         print('No checkpoint')
 
     eval_scripts = utils.get_sh_files_in_directory(os.path.join(sh_out, f'inf_{epochs}'))
-    if os.path.exists(eval_scripts):
+    if eval_scripts:
         print('Executing eval scripts...')
         for script in eval_scripts:
             script_path = os.path.join(sh_out, f'inf_{epochs}', script)
