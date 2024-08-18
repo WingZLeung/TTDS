@@ -36,7 +36,7 @@ def check_TORGO(root_dir):
                 file_path = os.path.join(root_dir, filename)
 
                 print(f"Downloading {url}...")
-                subprocess.run(["wget", "-q", "--show-progress", "-O", file_path, url], check=True)
+                subprocess.run(["wget", "-q", "-O", file_path, url], check=True)
 
                 print(f"Extracting {filename}...")
                 if tarfile.is_tarfile(file_path):
@@ -162,6 +162,9 @@ def preproces_csv(df, text_file):
     filter_words = ['JPG', 'AHPEEE', 'PAHTAHKAH', 'EEEPAH', 'FOR 5 SECONDS', 
                     'HE WILL ALLOW A RARE', "SAY 'OA' AS IN COAT", 'EEE', 'SAY OA', 
                     'RELAX YOUR MOUTH', 'XXX']
+    # filter_words = ['JPG', 'FOR 5 SECONDS', 
+    #             'HE WILL ALLOW A RARE', "SAY 'OA' AS IN COAT", 'EEE', 'SAY OA', 
+    #             'RELAX YOUR MOUTH', 'XXX']
     filtered_df = df[~df['label'].str.contains('|'.join(filter_words), case=False, na=False)]
     for index, row in df.iterrows():
         if any(word in row['label'] for word in filter_words):

@@ -18,4 +18,6 @@ source activate SD
 
 cd /fastdata/acr22wl/TTDS_run/dataset
 
-python TTDS.py /fastdata/acr22wl/corpora/TORGO --speechdiff_dir /fastdata/acr22wl/TTDS_run/speech-diff --output_dir /fastdata/acr22wl/TTDS_out
+# python TTDS.py /fastdata/acr22wl/corpora/TORGO --speechdiff_dir /fastdata/acr22wl/TTDS_run/speech-diff --output_dir /fastdata/acr22wl/TTDS_out
+
+# python prepare_TORGO.py /fastdata/acr22wl/TORGO_PPG_output/corpus/TORGO --output_dir /fastdata/acr22wl/TORGO_PPG_output/corpus
