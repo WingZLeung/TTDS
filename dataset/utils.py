@@ -287,10 +287,17 @@ def random_split(csv_path, output_dir, random_seed=None):
         np.random.shuffle(u_tags) # shuffle order of paired audio to randomise blocks
         num_combinations = len(u_tags)
         print(f"{speaker}. Paired audio: {num_combinations}")
-        combinations_per_block = num_combinations // 3
-        Block1 = u_tags[:combinations_per_block]
-        Block2 = u_tags[combinations_per_block: 2 * combinations_per_block]
-        Block3 = u_tags[2 * combinations_per_block:]
+        # CHANGE RATIO FOR SPLIT AS DESIRED
+        # # Equal split
+        # combinations_per_block = num_combinations // 3
+        # Block1 = u_tags[:combinations_per_block]
+        # Block2 = u_tags[combinations_per_block: 2 * combinations_per_block]
+        # Block3 = u_tags[2 * combinations_per_block:]
+        ## 80:10:10 ratio
+        combinations_per_block = num_combinations // 10   
+        Block1 = u_tags[:combinations_per_block * 8]
+        Block2 = u_tags[combinations_per_block * 8: combinations_per_block * 9]
+        Block3 = u_tags[combinations_per_block * 9:]
         for tag in Block1:
             data.loc[(data['speaker'] == speaker) & (data['ID'] == tag), 'block'] = 'B1'
         for tag in Block2:
